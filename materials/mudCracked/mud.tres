@@ -1,0 +1,32 @@
+[gd_resource type="StandardMaterial3D" load_steps=6 format=3 uid="uid://dct1w8ky4t67i"]
+
+[ext_resource type="Texture2D" uid="uid://byv0q15drgf8p" path="res://materials/mudCracked/Cracked_Mud_001_COLOR.jpg" id="1"]
+[ext_resource type="Texture2D" uid="uid://dd533nji5rwn1" path="res://materials/mudCracked/Cracked_Mud_001_OCC.jpg" id="2"]
+[ext_resource type="Texture2D" uid="uid://dnrslu5htcytg" path="res://materials/mudCracked/Cracked_Mud_001_DISP.png" id="3"]
+[ext_resource type="Texture2D" uid="uid://b7gawymiut3ym" path="res://materials/mudCracked/Cracked_Mud_001_NORM.jpg" id="4"]
+[ext_resource type="Texture2D" uid="uid://cvn4oaelffjqj" path="res://materials/mudCracked/Cracked_Mud_001_ROUGH.jpg" id="5"]
+
+[resource]
+resource_name = "mud"
+albedo_texture = ExtResource("1")
+metallic = 0.14
+metallic_specular = 0.0
+roughness = 0.89
+roughness_texture = ExtResource("5")
+roughness_texture_channel = 4
+normal_enabled = true
+normal_texture = ExtResource("4")
+rim_enabled = true
+rim = 0.02
+rim_tint = 0.1
+ao_enabled = true
+ao_light_affect = 0.2
+ao_texture = ExtResource("2")
+heightmap_enabled = true
+heightmap_scale = -0.01
+heightmap_deep_parallax = true
+heightmap_min_layers = 8
+heightmap_max_layers = 32
+heightmap_texture = ExtResource("3")
+heightmap_flip_texture = true
+uv1_scale = Vector3(0.66, 0.66, 0.66)

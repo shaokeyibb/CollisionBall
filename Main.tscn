@@ -1,0 +1,168 @@
+[gd_scene load_steps=8 format=3 uid="uid://ccpgi88678qpj"]
+
+[ext_resource type="Script" path="res://Main.cs" id="1_6p7mn"]
+[ext_resource type="Material" uid="uid://dct1w8ky4t67i" path="res://materials/mudCracked/mud.tres" id="2_eeh0q"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_v1aa6"]
+margin = 0.0
+height = 1.0
+radius = 50.0
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_6wpj8"]
+material = ExtResource("2_eeh0q")
+top_radius = 50.0
+bottom_radius = 50.0
+height = 1.0
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_l7urp"]
+
+[sub_resource type="Environment" id="Environment_ai3xj"]
+background_mode = 1
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_brvq4"]
+height = 0.5
+
+[node name="Main" type="Node"]
+script = ExtResource("1_6p7mn")
+
+[node name="Ground" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground"]
+shape = SubResource("CylinderShape3D_v1aa6")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Ground"]
+mesh = SubResource("CylinderMesh_6wpj8")
+
+[node name="DiePlane" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -50, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DiePlane"]
+shape = SubResource("WorldBoundaryShape3D_l7urp")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 70, 0)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.828491, 0.560003, 0, -0.560003, 0.828491, 0, 35.5998, 65.393)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_ai3xj")
+
+[node name="SpawnLocations" type="Node" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="SpawnLocations"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40, 10, 0)
+visible = false
+mesh = SubResource("CylinderMesh_brvq4")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="SpawnLocations"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, 40)
+visible = false
+mesh = SubResource("CylinderMesh_brvq4")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="SpawnLocations"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -40, 10, 0)
+visible = false
+mesh = SubResource("CylinderMesh_brvq4")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="SpawnLocations"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, -40)
+visible = false
+mesh = SubResource("CylinderMesh_brvq4")
+
+[node name="FailedUI" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="FailedUI"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.168627)
+
+[node name="Label" type="Label" parent="FailedUI"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -200.0
+offset_top = 50.0
+offset_right = 200.0
+offset_bottom = 187.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 100
+text = "你输了！"
+
+[node name="Button" type="Button" parent="FailedUI"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -200.0
+offset_top = -198.0
+offset_right = 200.0
+offset_bottom = -61.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 50
+text = "重新开始"
+
+[node name="SucceedUI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="SucceedUI"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0.168627)
+
+[node name="Label" type="Label" parent="SucceedUI"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -200.0
+offset_top = 50.0
+offset_right = 200.0
+offset_bottom = 187.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 100
+text = "你赢了！"
+
+[node name="Button" type="Button" parent="SucceedUI"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -200.0
+offset_top = -198.0
+offset_right = 200.0
+offset_bottom = -61.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 50
+text = "再玩一次"
+
+[connection signal="body_entered" from="DiePlane" to="." method="OnDiePlaneBodyEntered"]
+[connection signal="pressed" from="FailedUI/Button" to="." method="OnRetryButtonPressed"]
+[connection signal="pressed" from="SucceedUI/Button" to="." method="OnRetryButtonPressed"]

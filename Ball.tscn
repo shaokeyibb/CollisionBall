@@ -1,0 +1,19 @@
+[gd_scene load_steps=5 format=3 uid="uid://cfn44hcne5tqf"]
+
+[ext_resource type="Script" path="res://Ball.cs" id="1_3i67s"]
+[ext_resource type="Material" path="res://materials/brickOrange/brick.tres" id="2_md4jr"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_ejny7"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_p0tr3"]
+material = ExtResource("2_md4jr")
+
+[node name="Ball" type="CharacterBody3D"]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0)
+script = ExtResource("1_3i67s")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_ejny7")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_p0tr3")
